@@ -1,0 +1,471 @@
+{
+	"info": {
+		"_postman_id": "2a6fd689-c7d1-49d5-b9a6-c511c31e4bf6",
+		"name": "Shop burger",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25531539"
+	},
+	"item": [
+		{
+			"name": "Create item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"userId\",jsonData.result.id); ",
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Шортики\",\n    \"section\":\"Платья\",\n    \"description\":\"Модное платье из новой коллекции!\",\n    \"color\":\"RED\",\n    \"size\":44,\n    \"price\":{{$randomInt}},\n    \"params\":\"dress\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://shop.bugred.ru/api/items/create/",
+					"protocol": "http",
+					"host": [
+						"shop",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"api",
+						"items",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create min item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"userId\",jsonData.result.id); ",
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Шортики\",\n    \"section\":\"Платья\",\n    \"description\":\"Модное платье из новой коллекции!\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://shop.bugred.ru/api/items/create/",
+					"protocol": "http",
+					"host": [
+						"shop",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"api",
+						"items",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create image BASE64",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"userId\",jsonData.result.id); ",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Шортики\",\n    \"section\":\"Платья\",\n    \"description\":\"Модное платье из новой коллекции!\",\n    \"color\":\"RED\",\n    \"size\":44,\n    \"price\":{{$randomInt}},\n    \"params\":\"dress\",\n    \"photo\": \"data:image/png;base64,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\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://shop.bugred.ru/api/items/create/",
+					"protocol": "http",
+					"host": [
+						"shop",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"api",
+						"items",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"{{userId}}\",\n    \"name\":\"Шортики\",\n    \"section\":\"Платья\",\n    \"description\":\"Модное платье из новой коллекции!\",\n    \"color\":\"Blue\",\n    \"size\":44,\n    \"price\":{{$randomInt}},\n    \"params\":\"dress\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://shop.bugred.ru/api/items/update/",
+					"protocol": "http",
+					"host": [
+						"shop",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"api",
+						"items",
+						"update",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload image by form",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "{{userId}}",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/Users/natabelova/Downloads/photoTest.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://shop.bugred.ru/api/items/upload_photo/",
+					"protocol": "http",
+					"host": [
+						"shop",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"api",
+						"items",
+						"upload_photo",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": {{userId}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://shop.bugred.ru/api/items/get/",
+					"protocol": "http",
+					"host": [
+						"shop",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"api",
+						"items",
+						"get",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": {{userId}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://shop.bugred.ru/api/items/delete/",
+					"protocol": "http",
+					"host": [
+						"shop",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"api",
+						"items",
+						"delete",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search item byname",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"query\": \"платье\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://shop.bugred.ru/api/items/search/",
+					"protocol": "http",
+					"host": [
+						"shop",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"api",
+						"items",
+						"search",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get base data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"sql_query\": \"select * from items where last_id=456;\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://shop.bugred.ru/api/items/select/",
+					"protocol": "http",
+					"host": [
+						"shop",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"api",
+						"items",
+						"select",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "vObnCNTp3mBmOGii1OTk0287",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
